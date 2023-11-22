@@ -40,8 +40,8 @@ public class RealEstate {
         this.email = email;
     }
 
-    public void fillReg(){
-       // driver.get("https://www.aruodas.lt/ideti-skelbima/?obj=11");
+    public void fillReg() {
+        // driver.get("https://www.aruodas.lt/ideti-skelbima/?obj=11");
         setLocation();
         setDescription();
         uploadPhoto();
@@ -50,20 +50,18 @@ public class RealEstate {
         setPrice();
         setPhone();
         setEmail();
-       clickCheckboxes();
-
-
+        clickCheckboxes();
     }
 
-    public void clickCheckboxes(){
-       // driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[25]/span[1]/div/div/label/span")).click();
-        List <WebElement> rows = driver.findElement(By.id("newObjectForm")).findElements(By.tagName("li"));
+    public void clickCheckboxes() {
+        // driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[25]/span[1]/div/div/label/span")).click();
+        List<WebElement> rows = driver.findElement(By.id("newObjectForm")).findElements(By.tagName("li"));
         rows.get(rows.size() - 3).findElements(By.tagName("span")).get(1).click();
         rows.get(rows.size() - 4).findElement(By.tagName("span")).click();
         rows.get(rows.size() - 5).findElement(By.tagName("span")).click();
     }
 
-    public void setLocation(){
+    public void setLocation() {
         driver.findElement(By.xpath("//*[@id=\"newObjectForm\"]/ul/li[3]/span[1]/span")).click();
         driver.findElement(By.xpath("//*[@id=\"regionDropdown\"]/li[2]")).click();
         driver.findElement(By.xpath("//*[@id=\"district\"]/span")).click();
@@ -73,29 +71,34 @@ public class RealEstate {
         driver.findElement(By.xpath("//*[@id=\"streetField\"]/span[1]/span[2]")).click();
         driver.findElement(By.xpath("//*[@id=\"streets_1\"]/li[2]")).click();
     }
-    public void setDescription(){
+
+    public void setDescription() {
         driver.findElement(By.name("notes_lt")).sendKeys(this.description);
     }
-    public void uploadPhoto(){
+
+    public void uploadPhoto() {
         File resourceFile = new File("photo/" + this.photo);
         driver.findElement(By.xpath("//*[@id=\"uploadPhotoBtn\"]/input")).sendKeys(resourceFile.getAbsolutePath());
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("fancybox")));
     }
 
-    public void setYoutubeLink(){
+    public void setYoutubeLink() {
         driver.findElement(By.name("Video")).sendKeys(this.youtubeLink);
     }
-    public void setTour3D(){
+
+    public void setTour3D() {
         driver.findElement(By.name("tour_3d")).sendKeys(this.tour3D);
     }
-    public void setPrice(){
+
+    public void setPrice() {
         driver.findElement(By.name("price")).sendKeys(this.price);
     }
-    public void setPhone(){
+
+    public void setPhone() {
         driver.findElement(By.name("phone")).sendKeys(this.phone);
     }
-    public void setEmail(){
+
+    public void setEmail() {
         driver.findElement(By.name("email")).sendKeys(this.email);
     }
-
 }

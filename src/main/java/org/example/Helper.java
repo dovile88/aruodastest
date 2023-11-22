@@ -1,4 +1,5 @@
 package org.example;
+
 import org.example.Models.RealEstate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
